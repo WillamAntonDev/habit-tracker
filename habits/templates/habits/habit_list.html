@@ -2,6 +2,7 @@
 
 {% block content %}
   <h2>Your Habits for Today</h2>
+  <p><a href="{% url 'habits:create_habit' %}">+ Add a new habit</a></p>
 
   <ul>
     {% for habit in habits %}
