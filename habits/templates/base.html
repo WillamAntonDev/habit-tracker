@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Habit Tracker</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     {% if user.is_authenticated %}
@@ -9,9 +11,7 @@
     {% else %}
         <p><a href="{% url 'login' %}">Login</a></p>
     {% endif %}
-
     <hr>
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
 </body>
 </html>

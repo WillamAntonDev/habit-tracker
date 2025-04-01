@@ -1,0 +1,45 @@
+body {
+  font-family: 'Helvetica', sans-serif;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fdfdfd;
+  color: #333;
+}
+
+h2 {
+  color: #753696; /* Rebecca Purple */
+}
+
+a {
+  color: #506e40; /* Fern Green */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: #83ad6c; /* Asparagus */
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  margin-top: 0.5em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #506e40; /* Fern Green */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 0.5em 0;
+  border-bottom: 1px solid #ddd;
+}

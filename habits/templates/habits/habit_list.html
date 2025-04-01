@@ -1,23 +1,16 @@
-{% extends "base.html" %}
-{% load habit_extras %}
+{% extends "base.html" %} {% load habit_extras %} {% block content %}
+<h2>Your Habits for Today</h2>
 
-{% block content %}
-  <h2>Your Habits for Today</h2>
+<p><a href="{% url 'habits:create_habit' %}">+ Add a new habit</a></p>
 
-  <p><a href="{% url 'habits:create_habit' %}">+ Add a new habit</a></p>
-
-  <ul>
-    {% for habit in habits %}
-      <li>
-        {{ habit.name }} — 
-        {% with log=logs|get_item:habit.id %}
-          {% if log and log.completed %}
-            ✅ Completed
-          {% else %}
-            <a href="{% url 'habits:mark_completed' habit.id %}">Mark as done</a>
-          {% endif %}
-        {% endwith %}
-      </li>
-    {% endfor %}
-  </ul>
+<ul>
+  {% for habit in habits %}
+  <li>
+    {{ habit.name }} — {% with log=logs|get_item:habit.id %} {% if log and
+    log.completed %} ✅ Completed {% else %}
+    <a href="{% url 'habits:mark_completed' habit.id %}">Mark as done</a>
+    {% endif %} {% endwith %}
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}
