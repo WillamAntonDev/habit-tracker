@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Your Habits for Today</h2>
+
+  <ul>
+    {% for habit in habits %}
+      <li>
+        {{ habit.name }} — 
+        {% if logs|dictsort:habit.id and logs[habit.id].completed %}
+          ✅ Completed
+        {% else %}
+          <a href="{% url 'habits:mark_completed' habit.id %}">Mark as done</a>
+        {% endif %}
+      </li>
+    {% empty %}
+      <li>You haven’t added any habits yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
