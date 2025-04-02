@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import HabitForm
 from django.contrib.auth import login
@@ -24,6 +25,8 @@ def mark_completed(request, habit_id):
     log, created = HabitLog.objects.get_or_create(habit=habit, date=today)
     log.completed = not log.completed
     log.save()
+    status = "completed" if log.completed else "marked incomplete"
+    messages.success(request, f"Habit {status}.")
     return redirect('habits:habit_list')
 
 def register(request):
@@ -46,6 +49,7 @@ def create_habit(request):
             habit = form.save(commit=False)
             habit.user = request.user
             habit.save()
+            messages.success(request, "Habit created successfully!")
             return redirect('habits:habit_list')
     else:
         form = HabitForm()

@@ -93,3 +93,40 @@ a.mark-done {
 a.mark-done:hover {
   color: #506e40;
 }
+
+.messages {
+  list-style: none;
+  padding: 0;
+}
+
+.messages li {
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.messages .success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.messages .error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+
+.success {
+  background-color: #dcf8e4;
+  color: #2e6c3b;
+  border: 1px solid #83ad6c;
+}
+
+.error {
+  background-color: #fdd;
+  color: #a33;
+  border: 1px solid #e88;
+}

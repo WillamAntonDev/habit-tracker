@@ -11,6 +11,15 @@
     {% else %}
         <p><a href="{% url 'login' %}">Login</a></p>
     {% endif %}
+
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
     <hr>
     {% block content %}{% endblock %}
 </body>
