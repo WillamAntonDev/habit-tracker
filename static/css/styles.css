@@ -1,18 +1,21 @@
+/* General layout */
 body {
   font-family: 'Helvetica', sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
   max-width: 700px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #fdfdfd;
-  color: #333;
 }
 
+/* Header */
 h2 {
   color: #753696; /* Rebecca Purple */
 }
 
+/* Links */
 a {
-  color: #506e40; /* Fern Green */
+  color: #506e40;
   text-decoration: none;
 }
 
@@ -20,26 +23,73 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Form styling */
+form {
+  margin-top: 1rem;
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+form input[type="text"],
+form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form input[type="checkbox"] {
+  margin-top: 0.5rem;
+}
+
 button {
-  background-color: #83ad6c; /* Asparagus */
+  background-color: #83ad6c;
   color: white;
   border: none;
   padding: 0.5em 1em;
-  margin-top: 0.5em;
+  margin-top: 1rem;
   cursor: pointer;
   border-radius: 5px;
 }
 
 button:hover {
-  background-color: #506e40; /* Fern Green */
+  background-color: #506e40;
 }
-
+/* Habit List */
 ul {
   list-style: none;
   padding: 0;
+  margin-top: 1rem;
 }
 
 li {
-  padding: 0.5em 0;
-  border-bottom: 1px solid #ddd;
+  background-color: #f3f0f8;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Completed habit styling */
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Action link */
+a.mark-done {
+  color: #83ad6c;
+  font-weight: bold;
+}
+
+a.mark-done:hover {
+  color: #506e40;
 }
