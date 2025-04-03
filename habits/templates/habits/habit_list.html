@@ -4,20 +4,32 @@
 {% block content %}
   <h2>Your Habits for Today</h2>
 
-  <p><a href="{% url 'habits:create_habit' %}">+ Add a new habit</a></p>
+  <p><a href="{% url 'habits:create_habit' %}" class="add-habit">+ Add a new habit</a></p>
 
   <ul>
     {% for habit in habits %}
-      <li>
-        {{ habit.name }} —
-        {% with log=logs|get_item:habit.id %}
-          {% if log and log.completed %}
-            ✅ Completed
-          {% else %}
-            <a href="{% url 'habits:mark_completed' habit.id %}">Mark as done</a>
+      {% with log=logs|get_item:habit.id %}
+        <li class="habit-card {% if log and log.completed %}completed-card{% endif %}">
+          <div class="habit-header">
+            <strong>{{ habit.name }}</strong>
+            {% if log and log.completed %}
+              <span class="status-complete">✅ Completed</span>
+            {% endif %}
+          </div>
+          
+          {% if habit.description %}
+            <div class="habit-description"><em>{{ habit.description }}</em></div>
           {% endif %}
-        {% endwith %}
-      </li>
+
+          <div class="habit-actions">
+            {% if not log or not log.completed %}
+              <a href="{% url 'habits:mark_completed' habit.id %}" class="mark-done">✔ Mark as done</a>
+            {% endif %}
+            <a href="{% url 'habits:edit_habit' habit.id %}" class="edit-link">✏️ Edit</a>
+            <a href="{% url 'habits:delete_habit' habit.id %}" class="delete-link">🗑️ Delete</a>
+          </div>
+        </li>
+      {% endwith %}
     {% endfor %}
   </ul>
 {% endblock %}

@@ -55,3 +55,28 @@ def create_habit(request):
         form = HabitForm()
     
     return render(request, 'habits/create_habit.html', {'form': form})
+
+# TODO: Implement habit editing and deletion here if necessary.
+@login_required
+def edit_habit(request, habit_id):
+    habit = get_object_or_404(Habit, id=habit_id, user=request.user)
+    if request.method == 'POST':
+        form = HabitForm(request.POST, instance=habit)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Habit updated successfully!")
+            return redirect('habits:habit_list')
+    else:
+        form = HabitForm(instance=habit)
+    
+    return render(request, 'habits/edit_habit.html', {'form': form, 'habit': habit})
+
+@login_required
+def delete_habit(request, habit_id):
+    habit = get_object_or_404(Habit, id=habit_id, user=request.user)
+    if request.method == 'POST':
+        habit.delete()
+        messages.success(request, "Habit deleted successfully!")
+        return redirect('habits:habit_list')
+    
+    return render(request, 'habits/delete_habit.html', {'habit': habit})

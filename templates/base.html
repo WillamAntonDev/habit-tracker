@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Habit Tracker</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
     {% if user.is_authenticated %}
-        <p>Logged in as {{ user.username }} | <a href="{% url 'logout' %}">Logout</a></p>
+    <p>
+      Logged in as {{ user.username }} | <a href="{% url 'logout' %}">Logout</a>
+    </p>
     {% else %}
-        <p><a href="{% url 'login' %}">Login</a></p>
+    <p><a href="{% url 'login' %}">Login</a></p>
+    {% endif %} {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li class="success-message">{{ message }}</li>
+      {% endfor %}
+    </ul>
     {% endif %}
 
-    {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-          <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-
-    <hr>
+    <hr />
     {% block content %}{% endblock %}
-</body>
+  </body>
 </html>
